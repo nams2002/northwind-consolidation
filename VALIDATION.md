@@ -1,66 +1,121 @@
-# Output Validation, Independent Recomputations & AI Error Log
+# Validation: How I Know the Outputs Are Correct
 
 **Bundle ID:** `NWG-D0BC`
 
----
-
-## 1. Automated Invariant Checks Coded (`src/verifier.py` & `tests/`)
-
-Every run of `python -m src.main` executes five hard assertions in `src/verifier.py` before writing `/output`:
-
-1. **Consolidated Trial Balance Zero-Sum Check:** Verifies $\sum_{c \in \text{COA}} \text{NetBalance}_{\text{GBP}}(c) = 0.00$ across all 31 accounts (actual residual: `£0.00000000`).
-2. **Balance Sheet Accounting Identity (`A = L + E`):** Verifies Total Assets (**£28,596,245.74**) − Total Liabilities (**£10,231,437.86**) = Total Equity (**£18,364,807.88**) to `< 1e-6`.
-3. **Profit Attribution Split:** Verifies Group Profit (**£2,789,654.53**) = Profit Attributable to Owners (**£2,724,621.75**) + Profit Attributable to NCI (**£65,032.78**).
-4. **Double-Entry Elimination Symmetry:** Verifies $\sum \text{Debit} = \sum \text{Credit}$ for each of `ELIM-01` (£1,013,567.44), `ELIM-02` (£7,867,594.17), `ELIM-03` (£65,341.90), `ELIM-04` (£510,774.14), and `ELIM-05` (£500,782.47).
-5. **Pre- vs. Post-Acquisition India P&L Reconciliation:** Verifies that Q1 (`2024-04` to `2024-06`) + H2 (`2024-07` to `2024-12`) in `in_pl_monthly.csv` equals 100% of the 9-month YTD P&L lines in `tb_in.csv` (Revenue ₹642,000,000.00, Profit ₹60,000,000.00), and that Q1 profit equals exactly **₹18,000,000.00** per `acquisition_note.md`.
+This file separates three things: checks the pipeline runs on itself, tests that compare outputs with independent recomputation, and mistakes made by AI tools that review found.
 
 ---
 
-## 2. Independent Recomputation Proofs
+## 1. Checks coded in the pipeline (`src/verifier.py`)
 
-### A. Opening Group Equity Proof (`prior_year_group.csv` vs. Entity TBs at `2023-12-31`)
-We independently proved that opening group equity (**£14,267,097.93**) reconciles to the parent and UK subsidiary opening balances:
-* **US Opening Net Assets (excl. UK Investment of $1,270,000.00):**
-  $$\$2,000,000.00 (\text{SC}) + \$14,069,373.43 (\text{RE}) - \$1,270,000.00 (\text{Inv in UK}) = \$14,799,373.43\text{ USD}$$
-  Translated at the `2023-12-31` opening rate (`1.2730` USD/GBP) = **£11,625,587.93 GBP**.
-* **UK Opening Net Assets:**
-  $$£1,000,000.00 (\text{SC, eliminated}) + £1,641,510.00 (\text{P\&L Reserve}) = £2,641,510.00\text{ GBP}$$
-* **Total Opening Group Equity:**
-  $$£11,625,587.93 + £2,641,510.00 = £14,267,097.93\text{ GBP}$$
-  Matches `prior_year_group.csv` (`£1,250,000.00 SC + £12,604,747.93 RE + £412,350.00 TR`) to the exact penny.
+Every run of `python -m src.main` executes five assertions before any file is written. A failure raises `AssertionError` and aborts with no output.
 
-### B. Direct Component Proof of `translation_reserve_movement` (£43,786.11)
-Rather than treating the Translation Reserve (`3300`) as an unverified Balance Sheet plug, `src/verifier.py` recomputes the movement directly from the six underlying currency exposure components:
+| # | Check | Result on this bundle |
+| :-- | :--- | :--- |
+| 1 | Consolidated TB zero-sum (all 31 group accounts) | Residual 0.00 |
+| 2 | Balance sheet identity: assets = liabilities + equity | Residual 0.00 (£28,596,245.74 = £10,231,437.86 + £18,364,807.88) |
+| 3 | Profit attribution: group profit = owners + NCI | £2,789,654.53 = £2,724,621.75 + £65,032.78 |
+| 4 | Each of `ELIM-01` to `ELIM-05` balances (debits = credits) | Pass |
+| 5 | Translation reserve movement recomputed from six exposures matches the equity bridge within £0.01 | Difference £0.0069 |
 
-| Component Exposure | Local Currency Amount | Rate Transition (`From -> To`) | FX Movement (GBP) |
+**Limitation, stated plainly.** The translation reserve (3300) is the balancing figure in equity, so checks 1 and 2 hold by construction for that line. They catch lost or duplicated lines, not a wrong reserve. Check 5 is the independent test of 3300.
+
+---
+
+## 2. Tests (`tests/`)
+
+| File | What it does | Independent of the pipeline? |
+| :--- | :--- | :--- |
+| `test_consolidation.py` | Runs the pipeline and checks that all required files exist, the control figures equal the values I have reviewed, the TB and each elimination balance, and every trap is logged in `issues.json`. | **No.** It is a regression (snapshot) test: it protects against change but cannot show the figures are right. |
+| `test_independent_recompute.py` | Re-derives goodwill, NCI, group revenue and group profit from the raw CSV/JSON inputs with plain code, and checks India's Q1 + H2 against the 9-month trial balance and the INR 678M acquisition net assets. It imports nothing from `src/`. | **Yes.** |
+
+I also confirmed the independent test can fail: changing the expected NCI share from 20% to 25% makes `test_goodwill_and_nci` fail.
+
+---
+
+## 3. Independent recomputation
+
+All figures below were recomputed from the raw input files, not from pipeline output.
+
+### A. Revenue
+
+| Entity | Calculation | GBP |
+| :--- | :--- | ---: |
+| US | $18,400,000 / 1.2780 (FY average) | 14,397,496.09 |
+| UK | £9,850,000 (`4000` Sales only; `2310` Deferred income is a liability) | 9,850,000.00 |
+| India | INR 437,000,000 (Jul to Dec) / 107.7918 (H2 average) | 4,054,111.72 |
+| **Group revenue** | | **28,301,607.81** |
+
+### B. Profit, NCI and goodwill
+
+| Item | Calculation | Result |
+| :--- | :--- | ---: |
+| US profit | $1,856,250 (after posted journals) / 1.2780 | £1,452,464.79 |
+| UK profit | £1,044,292.28 per TB, less posted journals £12,200, less in-transit invoice £8,108.54, less FX retranslation loss £11,957.88 | £1,012,025.86 |
+| India H2 profit | INR 35,050,000 / 107.7918 | £325,163.88 |
+| **Group profit** | | **£2,789,654.53** |
+| NCI profit | 20% x INR 35,050,000 / 107.7918 | £65,032.78 |
+| NCI closing | 20% x (INR 678,000,000 + 35,050,000) / 107.28186 | £1,329,302.08 |
+| Goodwill | (INR 690,000,000 - 80% x INR 678,000,000) / 107.28186 | £1,375,815.07 |
+
+GBP/INR rates are cross rates (Policy 2): closing 1.2530 x 85.62 = 107.28186; H2 average 1.2840 x 83.95 = 107.7918.
+
+### C. Opening equity
+
+US net assets excluding the UK investment: $2,000,000 + $14,069,373.43 - $1,270,000 = $14,799,373.43. At the opening rate 1.2730 this is £11,625,587.93. Adding UK net assets (£1,000,000 share capital + £1,641,510 reserve = £2,641,510) gives £14,267,097.93, matching `prior_year_group.csv` (£1,250,000 + £12,604,747.93 + £412,350) to the penny.
+
+### D. Translation reserve movement (£43,786.11)
+
+| Exposure | Amount | Rate move | GBP |
 | :--- | ---: | :--- | ---: |
-| **1a. US Remaining Opening Net Assets** | $6,525,000.00 USD | `1.2730` (Open) $\rightarrow$ `1.2530` (Close) | **+£81,814.64** |
-| **1b. US Cash Used for India Acquisition** | $8,274,373.43 USD | `1.2730` (Open) $\rightarrow$ `1.2645` (1 Jul Spot) | **+£43,692.49** |
-| **2. US FY2024 Post-JE Profit** | $1,856,250.00 USD | `1.2780` (FY Avg) $\rightarrow$ `1.2530` (Close) | **+£28,979.74** |
-| **3. India Acquisition Net Assets (80% Group Share)** | ₹542,400,000.00 INR | `105.446655` (Spot) $\rightarrow$ `107.281860` (Close) | **-£87,992.40** |
-| **4. India H2 Post-Acq Profit (80% Group Share)** | ₹28,040,000.00 INR | `107.791800` (H2 Avg) $\rightarrow$ `107.281860` (Close) | **+£1,236.47** |
-| **5. India Goodwill Retranslation (Policy 4)** | ₹147,600,000.00 INR | `105.446655` (Spot) $\rightarrow$ `107.281860` (Close) | **-£23,944.83** |
-| **Direct Component Sum** | | | **£43,786.12** |
-| **Balance Sheet Equity Bridge (`close_tr - open_tr`)** | | | **£43,786.11** |
-| **Unrounded Difference (Explained by ERP 2-dp Rounding)** | | | **£0.0069** |
+| US remaining opening net assets | $6,525,000 | 1.2730 to 1.2530 | +81,814.64 |
+| US cash used for India acquisition | $8,274,373.43 | 1.2730 to 1.2645 (1 Jul spot) | +43,692.49 |
+| US FY2024 profit | $1,856,250 | 1.2780 (average) to 1.2530 | +28,979.74 |
+| India acquisition net assets, 80% | INR 542,400,000 | 105.4467 (spot) to 107.28186 | -87,992.40 |
+| India H2 profit, 80% | INR 28,040,000 | 107.7918 to 107.28186 | +1,236.47 |
+| India goodwill | INR 147,600,000 | 105.4467 to 107.28186 | -23,944.83 |
+| **Direct sum** | | | **43,786.11** |
 
-*Note on the £0.0069 difference:* In `tb_us.csv:L10`, US recorded the INR 690,000,000 acquisition at `83.39` spot as `$8,274,373.43` (rounding `$8,274,373.4261` up by `$0.0039`, or `£0.0031`), and `prior_year_group.csv` rounded opening retained earnings `£12,604,747.9262` up by `£0.0038` (`0.0031 + 0.0038 = £0.0069`).
+The unrounded difference from the equity bridge is £0.00695. It comes from two inputs that were rounded to 2 decimals: the US books record the India investment as $8,274,373.43 (exact: $8,274,373.4261, worth £0.0031 at closing) and `prior_year_group.csv` rounds opening retained earnings (£0.0038). Together £0.0069.
+
+### E. Reconciliations to source
+
+- India: Q1 + H2 in `in_pl_monthly.csv` equals the 9-month `tb_in.csv` for all eight P&L ledgers. Q1 profit is exactly INR 18,000,000, and INR 250M + 410M + 18M = INR 678M, matching `acquisition_note.md`.
+- Subledgers: US and India AR/AP tie to `subledger_controls.csv` exactly. UK AR and AP are each £45,000.00 above their controls (`ISS-SUB-001`).
+- Intercompany: £20,066.42 = £8,108.54 (in transit) + £11,957.88 (retranslation). P&L £10,074.75 = £8,108.54 + £1,966.21 (FX on elimination).
+
+### F. Disclosed rounding
+
+Each reported figure is rounded to 2 decimals (Policy 7), so lines on a statement can differ from their total by 1p. The P&L lines sum to £2,789,654.52 against the reported £2,789,654.53. `ELIM-03` debits and credits in `eliminations.csv` differ by 1p (£65,341.90 against £65,341.89).
 
 ---
 
-## 3. Three Things Our AI Tool Got Wrong (and the Commits That Fixed Them)
+## 4. Things AI tools got wrong (found in review)
 
-### AI Mistake 1: Default Integer Coercion Stripped Leading Zeros on UK Accounts `0030` and `0031`
-* **What the AI Did Wrong:** In the initial ingestion draft, the AI called `pd.read_csv("tb_uk.csv")` and `pd.read_csv("map_uk.csv")` without enforcing `dtype=str`. Pandas inferred `nominal_code` and `local_code` as integers, converting `"0030"` (*Plant and machinery - cost*, £2,900,000) to `30` and `"0031"` (*Plant and machinery - depreciation*, -£1,060,000) to `31`. When `adjustments.json` entry `JE-008` (£22,000 Q4 depreciation top-up) referenced string account `"0031"`, the lookup failed, misstating UK depreciation and PPE by **£22,000.00**.
-* **How We Caught It:** Running our journal account mapping check flagged `"0031"` in `JE-008` as an unmapped UK account even though `0031` was visibly present in `map_uk.csv:L8`.
-* **Fixing Commit:** `fix(ingestion): enforce strict string dtypes on all CSV loaders to preserve leading zeros on UK 0030/0031` (`src/ingestion.py`).
+These were found by re-reading the AI-written deliverables against the code and data, and by re-running the pipeline.
 
-### AI Mistake 2: Naive Consolidation of India's 9-Month YTD P&L (`tb_in.csv`) Including Pre-Acquisition Q1
-* **What the AI Did Wrong:** The AI initially mapped and translated all P&L rows directly from `tb_in.csv` (`FY25 YTD`, covering 1 April to 31 December 2024), overlooking that Northwind India was acquired on **1 July 2024**. That included Q1 (Apr–Jun 2024) pre-acquisition revenue of **₹205,000,000.00** (**£1,901,814.42**) and pre-acquisition profit of **₹18,000,000.00** (**£166,988.58**) inside Group P&L, and double-counted the ₹18M Q1 profit that was already embedded in the ₹678,000,000.00 acquisition net assets.
-* **How We Caught It:** Reconciling `tb_in.csv` Equity (`IN-SC` ₹250M + `IN-RE` ₹410M = ₹660M) against `acquisition_note.md` (Net assets at 1 July 2024 = ₹678M) revealed the exact ₹18M Q1 profit bridge, which matched the sum of `2024-04` to `2024-06` in `in_pl_monthly.csv`.
-* **Fixing Commit:** `fix(entity-close): slice India P&L using in_pl_monthly.csv to exclude Q1 pre-acquisition profit from Group P&L` (`src/entity_close.py`).
+### Mistake 1: Wrong line references in the architecture document
+- **What went wrong:** The trace example cited `tb_us.csv:L23` for account 6500 (real row: L24) and journal lines such as `adjustments.json:L125 (JE-007)` (real: L123). `ISS-JE-020` also cites `in_pl_monthly.csv:L45` for December depreciation (real: L46).
+- **How it was caught:** Comparing the document with the `source_rows` in `profit_and_loss.json` and with the row numbers in the data files.
+- **Fix:** References corrected in `ARCHITECTURE.md`. Commit: `corrected ARCHITECTURE.m`. The `L45` text in `ISS-JE-020` is still open, see section 5.
 
-### AI Mistake 3: Omitting Policy 3 Closing-Rate Retranslation on UK's USD Intercompany Payable (`2150`) and Double-Counting the P&L FX Gain (`7300`)
-* **What the AI Did Wrong:** First, the AI resolved the £8,108.54 in-transit invoice (`INV-US-2291`) on UK `2150`, bringing UK `2150` to -£498,816.26, but forgot Policy 3 (*"Monetary items in a currency other than the entity's functional currency are retranslated at the closing rate. Differences go to profit or loss (group account 7300)"*). Because UK `2150` is denominated in USD (`-$629,840.00 USD`), failing to retranslate it at `1.2530` left a **£11,957.88** Balance Sheet elimination gap against US `1250` (£510,774.14). Second, when eliminating intercompany P&L (`4200` £500,782.47 vs. `6300` £498,816.26), an intermediate prototype subtracted `ic_pl_fx_diff` (-£1,966.21) from the entity P&L sum, overlooking that crediting `7300` by £1,966.21 merely offsets the £1,966.21 gap between `4200` and `6300` inside P&L (net impact on Group Profit = £0.00).
-* **How We Caught It:** Our independent Translation Reserve proof (`src/verifier.py`) differed from the Balance Sheet equity bridge by exactly £1,966.21 (`ic_pl_fx_diff`), immediately pinpointing the double-counted P&L elimination gain.
-* **Fixing Commit:** `fix(consolidator): retranslate UK 2150 USD payable per Policy 3 and balance ELIM-05 P&L elimination in 7300` (`src/entity_close.py`, `src/consolidator.py`).
+### Mistake 2: This validation document described a check that did not exist
+- **What went wrong:** An earlier draft said `verifier.py` asserts that India's Q1 + H2 equals the YTD trial balance. The verifier's fifth check is the translation reserve proof. The draft also gave the `ELIM-02` total as £7,867,594.17; `eliminations.csv` totals £7,867,610.17.
+- **How it was caught:** Diffing the document against `src/verifier.py` and the generated CSV.
+- **Fix:** This document rewritten to match the code, and the Q1 + H2 reconciliation added as an independent test. Commit: 'corrected VALIDATION.md`.
+
+### Mistake 3: The repo did not run from a fresh clone
+- **What went wrong:** The README told the reader to `pip install -r requirements.txt`, but the file did not exist, and the README ended without a run command.
+- **How it was caught:** Walking through the README steps as a new user.
+- **Fix:** `requirements.txt` added and README completed. Commit: `requirements.txt`.
+
+---
+
+## 5. Known open items
+
+- Acquisition inputs and some verifier inputs are written into the code, so a changed `acquisition_note.md` would not flow through.
+- The mapping guard (`2310` to `4100`) and the depreciation check (`JE-020`) target this bundle's defects, not general rules.
+- `policy_config.json` keys other than `force_post_held_journals`, `mapping_overrides`, `missing_fx_policy.UK_1210_SGD_closing_rate`, `bundle_id` and `initials` are not read by the code.
+- The unbalanced-journal message in `issues.json` always says an injection was found and quotes USD, whatever the entity.
+- `ISS-JE-020` cites `in_pl_monthly.csv:L45`; the correct row is L46.
+- UK £45,000.00 AR/AP variance: flagged, not adjusted. If a controller adjusts it, total assets and total liabilities each fall by £45,000.00 and equity is unchanged.
