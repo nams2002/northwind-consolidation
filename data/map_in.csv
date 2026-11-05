@@ -1,0 +1,21 @@
+local_code,local_name,group_code
+IN-BNK-01,HDFC Bank current account,1100
+IN-AR,Sundry debtors,1200
+IN-INV,Stock-in-trade,1300
+IN-PPE,Plant and machinery,1500
+IN-ACD,Accumulated depreciation,1510
+IN-PRE,Prepaid expenses,1400
+IN-AP,Sundry creditors,2100
+IN-ACR,Provisions and accruals,2200
+IN-TAX,Income tax payable,2400
+IN-TL,Term loan - SBI,2500
+IN-SC,Equity share capital,3100
+IN-RE,Reserves and surplus (opening 1 Apr 2024),3200
+IN-REV,Revenue from operations,4100
+IN-COGS,Purchases and direct costs,5100
+IN-EMP,Employee benefit expense,6100
+IN-RENT,Rent,6200
+IN-DEP,Depreciation and amortisation,6400
+IN-OTH,Other expenses,6500
+IN-FIN,Finance costs,7100
+IN-TXE,Tax expense,8100

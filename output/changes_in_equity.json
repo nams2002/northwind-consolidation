@@ -1,0 +1,60 @@
+{
+  "statement": "Consolidated Statement of Changes in Equity",
+  "period": "FY2024 (Year ended 31 December 2024)",
+  "currency": "GBP",
+  "opening_balance_2024_01_01": {
+    "share_capital": 1250000.0,
+    "retained_earnings": 12604747.93,
+    "translation_reserve": 412350.0,
+    "owners_total": 14267097.93,
+    "non_controlling_interest": 0.0,
+    "total_equity": 14267097.93,
+    "source_rows": [
+      "prior_year_group.csv:L2-L5"
+    ]
+  },
+  "movements": {
+    "acquisition_of_subsidiary_india_2024_07_01": {
+      "share_capital": 0.0,
+      "retained_earnings": 0.0,
+      "translation_reserve": 0.0,
+      "non_controlling_interest": 1285958.29,
+      "total_equity": 1285958.29,
+      "source_rows": [
+        "acquisition_note.md:L3-L14",
+        "fx_rates.csv:L5",
+        "fx_rates.csv:L10"
+      ]
+    },
+    "profit_for_the_year": {
+      "share_capital": 0.0,
+      "retained_earnings": 2724621.75,
+      "translation_reserve": 0.0,
+      "non_controlling_interest": 65032.78,
+      "total_equity": 2789654.53
+    },
+    "other_comprehensive_income_translation_differences": {
+      "share_capital": 0.0,
+      "retained_earnings": 0.0,
+      "translation_reserve": 43786.11,
+      "non_controlling_interest": -21688.99,
+      "total_equity": 22097.12,
+      "component_breakdown_owners": {
+        "us_remaining_opening_net_assets": 81814.64,
+        "us_acquisition_cash_to_1_jul": 43692.49,
+        "us_fy24_profit_avg_to_close": 28979.74,
+        "in_80pct_acq_net_assets_spot_to_close": -87992.4,
+        "in_80pct_h2_profit_avg_to_close": 1236.47,
+        "in_goodwill_spot_to_close": -23944.83
+      }
+    }
+  },
+  "closing_balance_2024_12_31": {
+    "share_capital": 1250000.0,
+    "retained_earnings": 15329369.68,
+    "translation_reserve": 456136.11,
+    "owners_total": 17035505.79,
+    "non_controlling_interest": 1329302.08,
+    "total_equity": 18364807.88
+  }
+}

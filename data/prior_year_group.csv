@@ -1,0 +1,5 @@
+group_account,account_name,amount_gbp,as_of,note
+3100,Share capital,1250000.00,2023-12-31,Parent share capital at historical rate
+3200,Retained earnings,12604747.93,2023-12-31,
+3300,Translation reserve,412350.00,2023-12-31,Attributable to owners of the parent
+3400,Non-controlling interest,0.00,2023-12-31,No non-controlling interests at this date

@@ -1,0 +1,24 @@
+local_code,local_name,group_code
+1200,Bank - Barclays GBP,1100
+1210,Bank - DBS SGD,1100
+1100,Debtors control,1200
+1001,Stock,1300
+1103,Prepayments,1400
+0030,Plant and machinery - cost,1500
+0031,Plant and machinery - depreciation,1510
+2100,Creditors control,2100
+2150,Due to Northwind Inc,2150
+2109,Accruals,2200
+2310,Deferred income,4100
+2202,Corporation tax,2400
+3000,Share capital,3100
+3200,Profit and loss reserve,3200
+4000,Sales,4100
+5000,Cost of sales,5100
+7000,Gross wages,6100
+7100,Rent,6200
+8000,Depreciation,6400
+8210,Management charges - Northwind Inc,6300
+7500,General overheads,6500
+7920,Exchange differences,7300
+9500,Corporation tax charge,8100

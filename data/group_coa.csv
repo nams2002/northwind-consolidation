@@ -1,0 +1,32 @@
+account_code,account_name,account_type,statement,cash_flow_category,normal_balance
+1100,Cash and cash equivalents,Asset,BS,Cash,Debit
+1200,Trade receivables,Asset,BS,Operating,Debit
+1250,Intercompany receivables,Asset,BS,Operating,Debit
+1300,Inventory,Asset,BS,Operating,Debit
+1400,Prepayments,Asset,BS,Operating,Debit
+1500,"Property, plant and equipment - cost",Asset,BS,Investing,Debit
+1510,"Property, plant and equipment - accumulated depreciation",Asset,BS,NonCash,Credit
+1600,Investments in subsidiaries,Asset,BS,Investing,Debit
+1610,Investments in subsidiaries - India,Asset,BS,Investing,Debit
+1700,Goodwill,Asset,BS,NonCash,Debit
+2100,Trade payables,Liability,BS,Operating,Credit
+2150,Intercompany payables,Liability,BS,Operating,Credit
+2200,Accruals,Liability,BS,Operating,Credit
+2300,Deferred income,Liability,BS,Operating,Credit
+2400,Income tax payable,Liability,BS,Operating,Credit
+2500,Borrowings,Liability,BS,Financing,Credit
+3100,Share capital,Equity,BS,Financing,Credit
+3200,Retained earnings,Equity,BS,NonCash,Credit
+3300,Translation reserve,Equity,BS,NonCash,Credit
+3400,Non-controlling interest,Equity,BS,NonCash,Credit
+4100,Revenue,Revenue,PL,Operating,Credit
+4200,Intercompany management fee income,Revenue,PL,Operating,Credit
+5100,Cost of sales,Expense,PL,Operating,Debit
+6100,Staff costs,Expense,PL,Operating,Debit
+6200,Rent and occupancy,Expense,PL,Operating,Debit
+6300,Intercompany management fees,Expense,PL,Operating,Debit
+6400,Depreciation,Expense,PL,NonCash,Debit
+6500,Other operating expenses,Expense,PL,Operating,Debit
+7100,Finance costs,Expense,PL,Financing,Debit
+7300,Foreign exchange gains and losses,Expense,PL,NonCash,Debit
+8100,Income tax expense,Expense,PL,Operating,Debit

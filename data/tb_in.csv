@@ -1,0 +1,21 @@
+ledger_code,ledger_name,period,amount,dr_cr
+IN-BNK-01,HDFC Bank current account,FY25 YTD,285000000.00,Dr
+IN-AR,Sundry debtors,FY25 YTD,236000000.00,Dr
+IN-INV,Stock-in-trade,FY25 YTD,158000000.00,Dr
+IN-PPE,Plant and machinery,FY25 YTD,520000000.00,Dr
+IN-ACD,Accumulated depreciation,FY25 YTD,141000000.00,Cr
+IN-PRE,Prepaid expenses,FY25 YTD,24000000.00,Dr
+IN-AP,Sundry creditors,FY25 YTD,168000000.00,Cr
+IN-ACR,Provisions and accruals,FY25 YTD,41000000.00,Cr
+IN-TAX,Income tax payable,FY25 YTD,33000000.00,Cr
+IN-TL,Term loan - SBI,FY25 YTD,120000000.00,Cr
+IN-SC,Equity share capital,FY25 YTD,250000000.00,Cr
+IN-RE,Reserves and surplus (opening 1 Apr 2024),FY25 YTD,410000000.00,Cr
+IN-REV,Revenue from operations,FY25 YTD,642000000.00,Cr
+IN-COGS,Purchases and direct costs,FY25 YTD,371000000.00,Dr
+IN-EMP,Employee benefit expense,FY25 YTD,98000000.00,Dr
+IN-RENT,Rent,FY25 YTD,21000000.00,Dr
+IN-DEP,Depreciation and amortisation,FY25 YTD,27000000.00,Dr
+IN-OTH,Other expenses,FY25 YTD,30000000.00,Dr
+IN-FIN,Finance costs,FY25 YTD,9600000.00,Dr
+IN-TXE,Tax expense,FY25 YTD,25400000.00,Dr

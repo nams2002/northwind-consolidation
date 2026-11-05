@@ -1,0 +1,25 @@
+{
+  "bundle_id": "NWG-D0BC",
+  "initials": "ls",
+  "presentation_currency": "GBP",
+  "mapping_overrides": {
+    "UK": {
+      "2310": "2300"
+    },
+    "IN": {
+      "IN-GST-ITC": "1400"
+    }
+  },
+  "journal_overrides": {
+    "force_post_held_journals": [],
+    "force_reject_journals": ["JE-006", "JE-017", "JE-019"],
+    "hold_for_review_journals": ["JE-009", "JE-016", "JE-020"]
+  },
+  "missing_fx_policy": {
+    "UK_1210_SGD_closing_rate": null,
+    "fallback_tb_behavior": "retain_carrying_amount_and_flag"
+  },
+  "subledger_policy": {
+    "auto_adjust_to_subledger": false
+  }
+}

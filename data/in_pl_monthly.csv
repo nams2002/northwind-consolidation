@@ -1,0 +1,73 @@
+ledger_code,ledger_name,month,amount,dr_cr
+IN-REV,Revenue from operations,2024-04,65600000.00,Cr
+IN-REV,Revenue from operations,2024-05,67650000.00,Cr
+IN-REV,Revenue from operations,2024-06,71750000.00,Cr
+IN-REV,Revenue from operations,2024-07,65550000.00,Cr
+IN-REV,Revenue from operations,2024-08,69920000.00,Cr
+IN-REV,Revenue from operations,2024-09,74290000.00,Cr
+IN-REV,Revenue from operations,2024-10,74290000.00,Cr
+IN-REV,Revenue from operations,2024-11,74290000.00,Cr
+IN-REV,Revenue from operations,2024-12,78660000.00,Cr
+IN-COGS,Purchases and direct costs,2024-04,38400000.00,Dr
+IN-COGS,Purchases and direct costs,2024-05,39600000.00,Dr
+IN-COGS,Purchases and direct costs,2024-06,42000000.00,Dr
+IN-COGS,Purchases and direct costs,2024-07,37650000.00,Dr
+IN-COGS,Purchases and direct costs,2024-08,40160000.00,Dr
+IN-COGS,Purchases and direct costs,2024-09,42670000.00,Dr
+IN-COGS,Purchases and direct costs,2024-10,42670000.00,Dr
+IN-COGS,Purchases and direct costs,2024-11,42670000.00,Dr
+IN-COGS,Purchases and direct costs,2024-12,45180000.00,Dr
+IN-EMP,Employee benefit expense,2024-04,10240000.00,Dr
+IN-EMP,Employee benefit expense,2024-05,10560000.00,Dr
+IN-EMP,Employee benefit expense,2024-06,11200000.00,Dr
+IN-EMP,Employee benefit expense,2024-07,9900000.00,Dr
+IN-EMP,Employee benefit expense,2024-08,10560000.00,Dr
+IN-EMP,Employee benefit expense,2024-09,11220000.00,Dr
+IN-EMP,Employee benefit expense,2024-10,11220000.00,Dr
+IN-EMP,Employee benefit expense,2024-11,11220000.00,Dr
+IN-EMP,Employee benefit expense,2024-12,11880000.00,Dr
+IN-RENT,Rent,2024-04,2240000.00,Dr
+IN-RENT,Rent,2024-05,2310000.00,Dr
+IN-RENT,Rent,2024-06,2450000.00,Dr
+IN-RENT,Rent,2024-07,2100000.00,Dr
+IN-RENT,Rent,2024-08,2240000.00,Dr
+IN-RENT,Rent,2024-09,2380000.00,Dr
+IN-RENT,Rent,2024-10,2380000.00,Dr
+IN-RENT,Rent,2024-11,2380000.00,Dr
+IN-RENT,Rent,2024-12,2520000.00,Dr
+IN-DEP,Depreciation and amortisation,2024-04,2880000.00,Dr
+IN-DEP,Depreciation and amortisation,2024-05,2970000.00,Dr
+IN-DEP,Depreciation and amortisation,2024-06,3150000.00,Dr
+IN-DEP,Depreciation and amortisation,2024-07,2700000.00,Dr
+IN-DEP,Depreciation and amortisation,2024-08,2880000.00,Dr
+IN-DEP,Depreciation and amortisation,2024-09,3060000.00,Dr
+IN-DEP,Depreciation and amortisation,2024-10,3060000.00,Dr
+IN-DEP,Depreciation and amortisation,2024-11,3060000.00,Dr
+IN-DEP,Depreciation and amortisation,2024-12,3240000.00,Dr
+IN-OTH,Other expenses,2024-04,3200000.00,Dr
+IN-OTH,Other expenses,2024-05,3300000.00,Dr
+IN-OTH,Other expenses,2024-06,3500000.00,Dr
+IN-OTH,Other expenses,2024-07,3000000.00,Dr
+IN-OTH,Other expenses,2024-08,3200000.00,Dr
+IN-OTH,Other expenses,2024-09,3400000.00,Dr
+IN-OTH,Other expenses,2024-10,3400000.00,Dr
+IN-OTH,Other expenses,2024-11,3400000.00,Dr
+IN-OTH,Other expenses,2024-12,3600000.00,Dr
+IN-FIN,Finance costs,2024-04,1024000.00,Dr
+IN-FIN,Finance costs,2024-05,1056000.00,Dr
+IN-FIN,Finance costs,2024-06,1120000.00,Dr
+IN-FIN,Finance costs,2024-07,960000.00,Dr
+IN-FIN,Finance costs,2024-08,1024000.00,Dr
+IN-FIN,Finance costs,2024-09,1088000.00,Dr
+IN-FIN,Finance costs,2024-10,1088000.00,Dr
+IN-FIN,Finance costs,2024-11,1088000.00,Dr
+IN-FIN,Finance costs,2024-12,1152000.00,Dr
+IN-TXE,Tax expense,2024-04,1856000.00,Dr
+IN-TXE,Tax expense,2024-05,1914000.00,Dr
+IN-TXE,Tax expense,2024-06,2030000.00,Dr
+IN-TXE,Tax expense,2024-07,2940000.00,Dr
+IN-TXE,Tax expense,2024-08,3136000.00,Dr
+IN-TXE,Tax expense,2024-09,3332000.00,Dr
+IN-TXE,Tax expense,2024-10,3332000.00,Dr
+IN-TXE,Tax expense,2024-11,3332000.00,Dr
+IN-TXE,Tax expense,2024-12,3528000.00,Dr

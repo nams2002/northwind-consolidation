@@ -1,0 +1,32 @@
+account_code,account_name,account_type,statement,debit_gbp,credit_gbp,net_balance_gbp,source_rows
+1100,Cash and cash equivalents,Asset,BS,7810225.90,0.00,7810225.90,tb_us.csv:L2; tb_uk.csv:L2; tb_uk.csv:L3; tb_in.csv:L2
+1200,Trade receivables,Asset,BS,6665436.66,0.00,6665436.66,tb_us.csv:L3; tb_uk.csv:L4; adjustments.json:L199(JE-011); tb_in.csv:L3
+1250,Intercompany receivables,Asset,BS,0.00,0.00,0.00,tb_us.csv:L4; eliminations.csv:ELIM-04
+1300,Inventory,Asset,BS,3218502.18,0.00,3218502.18,tb_us.csv:L5; adjustments.json:L64(JE-004); tb_uk.csv:L5; tb_in.csv:L4
+1400,Prepayments,Asset,BS,497942.01,0.00,497942.01,tb_us.csv:L6; adjustments.json:L45(JE-003); tb_uk.csv:L6; adjustments.json:L180(JE-010); tb_in.csv:L7
+1500,"Property, plant and equipment - cost",Asset,BS,13174020.23,0.00,13174020.23,tb_us.csv:L7; tb_uk.csv:L7; tb_in.csv:L5
+1510,"Property, plant and equipment - accumulated depreciation",Asset,BS,0.00,4145696.32,-4145696.32,tb_us.csv:L8; adjustments.json:L26(JE-002); tb_uk.csv:L8; adjustments.json:L142(JE-008); tb_in.csv:L6
+1600,Investments in subsidiaries,Asset,BS,0.00,0.00,0.00,tb_us.csv:L9; eliminations.csv:ELIM-01
+1610,Investments in subsidiaries - India,Asset,BS,0.00,0.00,0.00,tb_us.csv:L10; eliminations.csv:ELIM-02
+1700,Goodwill,Asset,BS,1375815.07,0.00,1375815.07,tb_us.csv:L10; tb_in.csv:L12; tb_in.csv:L13; in_pl_monthly.csv:L2..in_pl_monthly.csv:L67; acquisition_note.md:L3-L14; eliminations.csv:ELIM-02
+2100,Trade payables,Liability,BS,0.00,4104779.23,-4104779.23,tb_us.csv:L11; tb_uk.csv:L9; tb_in.csv:L8
+2150,Intercompany payables,Liability,BS,0.00,0.00,0.00,tb_uk.csv:L10; intercompany.csv:L6; fx_rates.csv:L6; eliminations.csv:ELIM-04
+2200,Accruals,Liability,BS,0.00,961534.40,-961534.40,tb_us.csv:L12; adjustments.json:L7(JE-001); adjustments.json:L83(JE-005); adjustments.json:L256(JE-014); tb_uk.csv:L11; adjustments.json:L123(JE-007); tb_in.csv:L9; adjustments.json:L218(JE-012); adjustments.json:L237(JE-013); adjustments.json:L332(JE-018)
+2300,Deferred income,Liability,BS,0.00,483272.15,-483272.15,tb_us.csv:L13; tb_uk.csv:L12
+2400,Income tax payable,Liability,BS,0.00,770007.16,-770007.16,tb_us.csv:L14; tb_uk.csv:L13; tb_in.csv:L10
+2500,Borrowings,Liability,BS,0.00,3911844.93,-3911844.93,tb_us.csv:L15; tb_in.csv:L11
+3100,Share capital,Equity,BS,0.00,1250000.00,-1250000.00,prior_year_group.csv:L2; eliminations.csv:ELIM-01; eliminations.csv:ELIM-02
+3200,Retained earnings,Equity,BS,0.00,12539715.15,-12539715.15,prior_year_group.csv:L3; eliminations.csv:ELIM-02; eliminations.csv:ELIM-03
+3300,Translation reserve,Equity,BS,0.00,456136.11,-456136.11,prior_year_group.csv:L4; eliminations.csv:ELIM-01; eliminations.csv:ELIM-02; eliminations.csv:ELIM-03
+3400,Non-controlling interest,Equity,BS,0.00,1329302.08,-1329302.08,prior_year_group.csv:L5; eliminations.csv:ELIM-02; eliminations.csv:ELIM-03
+4100,Revenue,Revenue,PL,0.00,28301607.81,-28301607.81,tb_us.csv:L18; tb_uk.csv:L16; in_pl_monthly.csv:L5..in_pl_monthly.csv:L10
+4200,Intercompany management fee income,Revenue,PL,0.00,0.00,0.00,tb_us.csv:L19; eliminations.csv:ELIM-05
+5100,Cost of sales,Expense,PL,15216592.61,0.00,15216592.61,tb_us.csv:L20; adjustments.json:L64(JE-004); tb_uk.csv:L17; in_pl_monthly.csv:L14..in_pl_monthly.csv:L19; adjustments.json:L275(JE-015)
+6100,Staff costs,Expense,PL,5377709.98,0.00,5377709.98,tb_us.csv:L21; adjustments.json:L7(JE-001); tb_uk.csv:L18; tb_uk.csv:L19; in_pl_monthly.csv:L23..in_pl_monthly.csv:L28; adjustments.json:L237(JE-013)
+6200,Rent and occupancy,Expense,PL,789466.86,0.00,789466.86,tb_us.csv:L22; tb_uk.csv:L20; adjustments.json:L180(JE-010); in_pl_monthly.csv:L32..in_pl_monthly.csv:L37
+6300,Intercompany management fees,Expense,PL,0.00,0.00,0.00,tb_uk.csv:L22; intercompany.csv:L6; fx_rates.csv:L6; eliminations.csv:ELIM-05
+6400,Depreciation,Expense,PL,989160.73,0.00,989160.73,tb_us.csv:L23; adjustments.json:L26(JE-002); tb_uk.csv:L21; adjustments.json:L142(JE-008); in_pl_monthly.csv:L41..in_pl_monthly.csv:L46
+6500,Other operating expenses,Expense,PL,1776713.25,0.00,1776713.25,tb_us.csv:L24; adjustments.json:L45(JE-003); adjustments.json:L256(JE-014); tb_uk.csv:L23; adjustments.json:L123(JE-007); adjustments.json:L199(JE-011); in_pl_monthly.csv:L50..in_pl_monthly.csv:L55; adjustments.json:L218(JE-012); adjustments.json:L275(JE-015)
+7100,Finance costs,Expense,PL,300580.07,0.00,300580.07,tb_us.csv:L25; adjustments.json:L83(JE-005); in_pl_monthly.csv:L59..in_pl_monthly.csv:L64; adjustments.json:L332(JE-018)
+7300,Foreign exchange gains and losses,Expense,PL,9991.67,0.00,9991.67,tb_uk.csv:L10; fx_rates.csv:L6; eliminations.csv:ELIM-05
+8100,Income tax expense,Expense,PL,1051738.12,0.00,1051738.12,tb_us.csv:L26; tb_uk.csv:L24; in_pl_monthly.csv:L68..in_pl_monthly.csv:L73

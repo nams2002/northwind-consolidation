@@ -1,0 +1,7 @@
+entity_id,ledger,currency,control_total,as_of
+US,Accounts receivable (trade),USD,3120000.00,2024-12-31
+US,Accounts payable (trade),USD,1665000.00,2024-12-31
+UK,Accounts receivable (trade),GBP,1940000.00,2024-12-31
+UK,Accounts payable (trade),GBP,1165000.00,2024-12-31
+IN,Accounts receivable (trade),INR,236000000.00,2024-12-31
+IN,Accounts payable (trade),INR,168000000.00,2024-12-31

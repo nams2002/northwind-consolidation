@@ -1,0 +1,13 @@
+base_currency,quote_currency,rate_type,rate,as_of,convention
+GBP,USD,opening,1.2730,2023-12-31,USD per 1 GBP
+GBP,USD,average,1.2780,FY2024,USD per 1 GBP
+GBP,USD,h2_average,1.2840,2024-07-01 to 2024-12-31,USD per 1 GBP
+GBP,USD,spot,1.2645,2024-07-01,USD per 1 GBP
+GBP,USD,closing,1.2530,2024-12-31,USD per 1 GBP
+USD,INR,opening,83.21,2023-12-31,INR per 1 USD
+USD,INR,average,83.68,FY2024,INR per 1 USD
+USD,INR,h2_average,83.95,2024-07-01 to 2024-12-31,INR per 1 USD
+USD,INR,spot,83.39,2024-07-01,INR per 1 USD
+USD,INR,closing,85.62,2024-12-31,INR per 1 USD
+GBP,SGD,opening,1.6830,2023-12-31,SGD per 1 GBP
+GBP,SGD,average,1.7120,FY2024,SGD per 1 GBP

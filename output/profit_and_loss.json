@@ -1,0 +1,154 @@
+{
+  "statement": "Consolidated Statement of Profit or Loss",
+  "period": "FY2024 (Year ended 31 December 2024)",
+  "currency": "GBP",
+  "line_items": [
+    {
+      "account_code": "4100",
+      "account_name": "Revenue",
+      "account_type": "Revenue",
+      "amount_gbp": 28301607.81,
+      "source_rows": [
+        "tb_us.csv:L18",
+        "tb_uk.csv:L16",
+        "in_pl_monthly.csv:L5..in_pl_monthly.csv:L10"
+      ]
+    },
+    {
+      "account_code": "4200",
+      "account_name": "Intercompany management fee income",
+      "account_type": "Revenue",
+      "amount_gbp": 0.0,
+      "source_rows": [
+        "tb_us.csv:L19",
+        "eliminations.csv:ELIM-05"
+      ]
+    },
+    {
+      "account_code": "5100",
+      "account_name": "Cost of sales",
+      "account_type": "Expense",
+      "amount_gbp": -15216592.61,
+      "source_rows": [
+        "tb_us.csv:L20",
+        "adjustments.json:L64(JE-004)",
+        "tb_uk.csv:L17",
+        "in_pl_monthly.csv:L14..in_pl_monthly.csv:L19",
+        "adjustments.json:L275(JE-015)"
+      ]
+    },
+    {
+      "account_code": "6100",
+      "account_name": "Staff costs",
+      "account_type": "Expense",
+      "amount_gbp": -5377709.98,
+      "source_rows": [
+        "tb_us.csv:L21",
+        "adjustments.json:L7(JE-001)",
+        "tb_uk.csv:L18",
+        "tb_uk.csv:L19",
+        "in_pl_monthly.csv:L23..in_pl_monthly.csv:L28",
+        "adjustments.json:L237(JE-013)"
+      ]
+    },
+    {
+      "account_code": "6200",
+      "account_name": "Rent and occupancy",
+      "account_type": "Expense",
+      "amount_gbp": -789466.86,
+      "source_rows": [
+        "tb_us.csv:L22",
+        "tb_uk.csv:L20",
+        "adjustments.json:L180(JE-010)",
+        "in_pl_monthly.csv:L32..in_pl_monthly.csv:L37"
+      ]
+    },
+    {
+      "account_code": "6300",
+      "account_name": "Intercompany management fees",
+      "account_type": "Expense",
+      "amount_gbp": 0.0,
+      "source_rows": [
+        "tb_uk.csv:L22",
+        "intercompany.csv:L6",
+        "fx_rates.csv:L6",
+        "eliminations.csv:ELIM-05"
+      ]
+    },
+    {
+      "account_code": "6400",
+      "account_name": "Depreciation",
+      "account_type": "Expense",
+      "amount_gbp": -989160.73,
+      "source_rows": [
+        "tb_us.csv:L23",
+        "adjustments.json:L26(JE-002)",
+        "tb_uk.csv:L21",
+        "adjustments.json:L142(JE-008)",
+        "in_pl_monthly.csv:L41..in_pl_monthly.csv:L46"
+      ]
+    },
+    {
+      "account_code": "6500",
+      "account_name": "Other operating expenses",
+      "account_type": "Expense",
+      "amount_gbp": -1776713.25,
+      "source_rows": [
+        "tb_us.csv:L24",
+        "adjustments.json:L45(JE-003)",
+        "adjustments.json:L256(JE-014)",
+        "tb_uk.csv:L23",
+        "adjustments.json:L123(JE-007)",
+        "adjustments.json:L199(JE-011)",
+        "in_pl_monthly.csv:L50..in_pl_monthly.csv:L55",
+        "adjustments.json:L218(JE-012)",
+        "adjustments.json:L275(JE-015)"
+      ]
+    },
+    {
+      "account_code": "7100",
+      "account_name": "Finance costs",
+      "account_type": "Expense",
+      "amount_gbp": -300580.07,
+      "source_rows": [
+        "tb_us.csv:L25",
+        "adjustments.json:L83(JE-005)",
+        "in_pl_monthly.csv:L59..in_pl_monthly.csv:L64",
+        "adjustments.json:L332(JE-018)"
+      ]
+    },
+    {
+      "account_code": "7300",
+      "account_name": "Foreign exchange gains and losses",
+      "account_type": "Expense",
+      "amount_gbp": -9991.67,
+      "source_rows": [
+        "tb_uk.csv:L10",
+        "fx_rates.csv:L6",
+        "eliminations.csv:ELIM-05"
+      ]
+    },
+    {
+      "account_code": "8100",
+      "account_name": "Income tax expense",
+      "account_type": "Expense",
+      "amount_gbp": -1051738.12,
+      "source_rows": [
+        "tb_us.csv:L26",
+        "tb_uk.csv:L24",
+        "in_pl_monthly.csv:L68..in_pl_monthly.csv:L73"
+      ]
+    }
+  ],
+  "subtotals": {
+    "group_revenue": 28301607.81,
+    "gross_profit": 13085015.2,
+    "operating_profit": 4151964.38,
+    "profit_before_tax": 3841392.64,
+    "group_profit": 2789654.53
+  },
+  "attribution": {
+    "profit_attributable_to_owners": 2724621.75,
+    "profit_attributable_to_nci": 65032.78
+  }
+}

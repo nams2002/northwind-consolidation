@@ -1,0 +1,254 @@
+{
+  "statement": "Consolidated Balance Sheet",
+  "as_of": "2024-12-31",
+  "currency": "GBP",
+  "assets": [
+    {
+      "account_code": "1100",
+      "account_name": "Cash and cash equivalents",
+      "account_type": "Asset",
+      "amount_gbp": 7810225.9,
+      "source_rows": [
+        "tb_us.csv:L2",
+        "tb_uk.csv:L2",
+        "tb_uk.csv:L3",
+        "tb_in.csv:L2"
+      ]
+    },
+    {
+      "account_code": "1200",
+      "account_name": "Trade receivables",
+      "account_type": "Asset",
+      "amount_gbp": 6665436.66,
+      "source_rows": [
+        "tb_us.csv:L3",
+        "tb_uk.csv:L4",
+        "adjustments.json:L199(JE-011)",
+        "tb_in.csv:L3"
+      ]
+    },
+    {
+      "account_code": "1250",
+      "account_name": "Intercompany receivables",
+      "account_type": "Asset",
+      "amount_gbp": 0.0,
+      "source_rows": [
+        "tb_us.csv:L4",
+        "eliminations.csv:ELIM-04"
+      ]
+    },
+    {
+      "account_code": "1300",
+      "account_name": "Inventory",
+      "account_type": "Asset",
+      "amount_gbp": 3218502.18,
+      "source_rows": [
+        "tb_us.csv:L5",
+        "adjustments.json:L64(JE-004)",
+        "tb_uk.csv:L5",
+        "tb_in.csv:L4"
+      ]
+    },
+    {
+      "account_code": "1400",
+      "account_name": "Prepayments",
+      "account_type": "Asset",
+      "amount_gbp": 497942.01,
+      "source_rows": [
+        "tb_us.csv:L6",
+        "adjustments.json:L45(JE-003)",
+        "tb_uk.csv:L6",
+        "adjustments.json:L180(JE-010)",
+        "tb_in.csv:L7"
+      ]
+    },
+    {
+      "account_code": "1500",
+      "account_name": "Property, plant and equipment - cost",
+      "account_type": "Asset",
+      "amount_gbp": 13174020.23,
+      "source_rows": [
+        "tb_us.csv:L7",
+        "tb_uk.csv:L7",
+        "tb_in.csv:L5"
+      ]
+    },
+    {
+      "account_code": "1510",
+      "account_name": "Property, plant and equipment - accumulated depreciation",
+      "account_type": "Asset",
+      "amount_gbp": -4145696.32,
+      "source_rows": [
+        "tb_us.csv:L8",
+        "adjustments.json:L26(JE-002)",
+        "tb_uk.csv:L8",
+        "adjustments.json:L142(JE-008)",
+        "tb_in.csv:L6"
+      ]
+    },
+    {
+      "account_code": "1600",
+      "account_name": "Investments in subsidiaries",
+      "account_type": "Asset",
+      "amount_gbp": 0.0,
+      "source_rows": [
+        "tb_us.csv:L9",
+        "eliminations.csv:ELIM-01"
+      ]
+    },
+    {
+      "account_code": "1610",
+      "account_name": "Investments in subsidiaries - India",
+      "account_type": "Asset",
+      "amount_gbp": 0.0,
+      "source_rows": [
+        "tb_us.csv:L10",
+        "eliminations.csv:ELIM-02"
+      ]
+    },
+    {
+      "account_code": "1700",
+      "account_name": "Goodwill",
+      "account_type": "Asset",
+      "amount_gbp": 1375815.07,
+      "source_rows": [
+        "tb_us.csv:L10",
+        "tb_in.csv:L12",
+        "tb_in.csv:L13",
+        "in_pl_monthly.csv:L2..in_pl_monthly.csv:L67",
+        "acquisition_note.md:L3-L14",
+        "eliminations.csv:ELIM-02"
+      ]
+    }
+  ],
+  "liabilities": [
+    {
+      "account_code": "2100",
+      "account_name": "Trade payables",
+      "account_type": "Liability",
+      "amount_gbp": 4104779.23,
+      "source_rows": [
+        "tb_us.csv:L11",
+        "tb_uk.csv:L9",
+        "tb_in.csv:L8"
+      ]
+    },
+    {
+      "account_code": "2150",
+      "account_name": "Intercompany payables",
+      "account_type": "Liability",
+      "amount_gbp": 0.0,
+      "source_rows": [
+        "tb_uk.csv:L10",
+        "intercompany.csv:L6",
+        "fx_rates.csv:L6",
+        "eliminations.csv:ELIM-04"
+      ]
+    },
+    {
+      "account_code": "2200",
+      "account_name": "Accruals",
+      "account_type": "Liability",
+      "amount_gbp": 961534.4,
+      "source_rows": [
+        "tb_us.csv:L12",
+        "adjustments.json:L7(JE-001)",
+        "adjustments.json:L83(JE-005)",
+        "adjustments.json:L256(JE-014)",
+        "tb_uk.csv:L11",
+        "adjustments.json:L123(JE-007)",
+        "tb_in.csv:L9",
+        "adjustments.json:L218(JE-012)",
+        "adjustments.json:L237(JE-013)",
+        "adjustments.json:L332(JE-018)"
+      ]
+    },
+    {
+      "account_code": "2300",
+      "account_name": "Deferred income",
+      "account_type": "Liability",
+      "amount_gbp": 483272.15,
+      "source_rows": [
+        "tb_us.csv:L13",
+        "tb_uk.csv:L12"
+      ]
+    },
+    {
+      "account_code": "2400",
+      "account_name": "Income tax payable",
+      "account_type": "Liability",
+      "amount_gbp": 770007.16,
+      "source_rows": [
+        "tb_us.csv:L14",
+        "tb_uk.csv:L13",
+        "tb_in.csv:L10"
+      ]
+    },
+    {
+      "account_code": "2500",
+      "account_name": "Borrowings",
+      "account_type": "Liability",
+      "amount_gbp": 3911844.93,
+      "source_rows": [
+        "tb_us.csv:L15",
+        "tb_in.csv:L11"
+      ]
+    }
+  ],
+  "equity": [
+    {
+      "account_code": "3100",
+      "account_name": "Share capital",
+      "account_type": "Equity",
+      "amount_gbp": 1250000.0,
+      "source_rows": [
+        "prior_year_group.csv:L2",
+        "eliminations.csv:ELIM-01",
+        "eliminations.csv:ELIM-02"
+      ]
+    },
+    {
+      "account_code": "3200",
+      "account_name": "Retained earnings",
+      "account_type": "Equity",
+      "amount_gbp": 15329369.68,
+      "source_rows": [
+        "prior_year_group.csv:L3",
+        "eliminations.csv:ELIM-02",
+        "eliminations.csv:ELIM-03",
+        "profit_and_loss.json:profit_owners"
+      ]
+    },
+    {
+      "account_code": "3300",
+      "account_name": "Translation reserve",
+      "account_type": "Equity",
+      "amount_gbp": 456136.11,
+      "source_rows": [
+        "prior_year_group.csv:L4",
+        "eliminations.csv:ELIM-01",
+        "eliminations.csv:ELIM-02",
+        "eliminations.csv:ELIM-03"
+      ]
+    },
+    {
+      "account_code": "3400",
+      "account_name": "Non-controlling interest",
+      "account_type": "Equity",
+      "amount_gbp": 1329302.08,
+      "source_rows": [
+        "prior_year_group.csv:L5",
+        "eliminations.csv:ELIM-02",
+        "eliminations.csv:ELIM-03"
+      ]
+    }
+  ],
+  "totals": {
+    "total_assets": 28596245.74,
+    "total_liabilities": 10231437.86,
+    "net_assets": 18364807.88,
+    "equity_attributable_to_owners": 17035505.79,
+    "non_controlling_interest": 1329302.08,
+    "total_equity": 18364807.88
+  }
+}

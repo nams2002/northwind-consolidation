@@ -1,0 +1,26 @@
+account_code,account_name,debit,credit
+1100,Cash and cash equivalents,4875000.00,0.00
+1200,Trade receivables,3120000.00,0.00
+1250,Intercompany receivable - Northwind UK,640000.00,0.00
+1300,Inventory,1450000.00,0.00
+1400,Prepayments,210000.00,0.00
+1500,"Property, plant & equipment - cost",6800000.00,0.00
+1510,"Property, plant & equipment - accumulated depreciation",0.00,2150000.00
+1600,Investment in Northwind UK Ltd,1270000.00,0.00
+1610,Investment in Northwind India Pvt Ltd,8274373.43,0.00
+2100,Trade payables,0.00,1665000.00
+2200,Accruals,0.00,420000.00
+2300,Deferred income,0.00,380000.00
+2400,Income tax payable,0.00,310000.00
+2500,Bank loan,0.00,3500000.00
+3100,Share capital,0.00,2000000.00
+3200,Retained earnings,0.00,14069373.43
+4100,Revenue,0.00,18400000.00
+4200,Management fee income - intercompany,0.00,640000.00
+5100,Cost of sales,9850000.00,0.00
+6100,Staff costs,3900000.00,0.00
+6200,Rent and occupancy,480000.00,0.00
+6400,Depreciation,610000.00,0.00
+6500,Other operating expenses,1120000.00,0.00
+7100,Finance costs,245000.00,0.00
+8100,Income tax expense,690000.00,0.00

@@ -1,0 +1,68 @@
+{
+  "group_revenue": 28301607.81,
+  "group_profit": 2789654.53,
+  "profit_owners": 2724621.75,
+  "profit_nci": 65032.78,
+  "nci_closing": 1329302.08,
+  "goodwill_closing": 1375815.07,
+  "translation_reserve_movement": 43786.11,
+  "total_assets": 28596245.74,
+  "total_equity": 18364807.88,
+  "intercompany_difference": {
+    "balance_sheet_ar_ap": {
+      "unadjusted_difference_gbp": 20066.42,
+      "us_ic_receivable_1250_gbp_at_closing": 510774.14,
+      "uk_ic_payable_2150_booked_gbp": 490707.72,
+      "causes": {
+        "invoice_in_transit_INV_US_2291_gbp_at_closing": 8108.54,
+        "uk_usd_payable_retranslation_loss_to_7300_gbp": 11957.88
+      }
+    },
+    "profit_and_loss_management_fees": {
+      "unadjusted_difference_gbp": 10074.75,
+      "us_ic_fee_income_4200_gbp_at_avg": 500782.47,
+      "uk_ic_fee_expense_6300_booked_gbp": 490707.72,
+      "causes": {
+        "invoice_in_transit_INV_US_2291_gbp_at_closing": 8108.54,
+        "remaining_fx_elimination_gain_to_7300_gbp": 1966.21
+      }
+    }
+  },
+  "sgd_bank_gbp": {
+    "value": null,
+    "reason": "Closing GBP/SGD exchange rate as of 2024-12-31 is missing from fx_rates.csv (only opening 1.6830 and FY2024 average 1.7120 are provided). Under Group Policy 3, foreign currency monetary items must be retranslated at the closing rate; therefore the closing GBP value of UK nominal account 1210 (SGD 40,000.00, carrying book value \u00a323,010.00) cannot be determined without estimating an external rate."
+  },
+  "journals": {
+    "posted": 14,
+    "rejected": 3,
+    "held_for_review": 3,
+    "details": {
+      "posted_ids": [
+        "JE-001",
+        "JE-002",
+        "JE-003",
+        "JE-004",
+        "JE-005",
+        "JE-007",
+        "JE-008",
+        "JE-010",
+        "JE-011",
+        "JE-012",
+        "JE-013",
+        "JE-014",
+        "JE-015",
+        "JE-018"
+      ],
+      "rejected_ids": [
+        "JE-006",
+        "JE-017",
+        "JE-019"
+      ],
+      "held_for_review_ids": [
+        "JE-009",
+        "JE-016",
+        "JE-020"
+      ]
+    }
+  }
+}

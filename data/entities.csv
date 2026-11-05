@@ -1,0 +1,4 @@
+entity_id,legal_name,country,functional_currency,ownership_pct,acquisition_date,financial_year_end,erp_system,tb_file
+US,Northwind Inc.,United States,USD,,,31-Dec,NetSuite,tb_us.csv
+UK,Northwind UK Ltd,United Kingdom,GBP,100,2016-03-01,31-Dec,Sage 50,tb_uk.csv
+IN,Northwind India Pvt Ltd,India,INR,80,2024-07-01,31-Mar,Tally Prime,tb_in.csv
