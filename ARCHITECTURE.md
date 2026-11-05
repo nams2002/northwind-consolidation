@@ -142,9 +142,9 @@ Every balance is an `AccountBalance` (`src/models.py`) carrying `source_rows: Li
 **Statement level.** `profit_and_loss.json` and `consolidated_tb.csv` report £1,776,713.25, with source rows:
 
 ```text
-tb_us.csv:L23; adjustments.json:L49 (JE-003); adjustments.json:L246 (JE-014);
+tb_us.csv:L24; adjustments.json:L45 (JE-003); adjustments.json:L256 (JE-014);
 tb_uk.csv:L23; adjustments.json:L125 (JE-007); adjustments.json:L197 (JE-011);
-in_pl_monthly.csv:L49..L54; adjustments.json:L215 (JE-012); adjustments.json:L264 (JE-015)
+in_pl_monthly.csv:L50..L55; adjustments.json:L215 (JE-012); adjustments.json:L275 (JE-015)
 ```
 
 **Entity level.**
