@@ -1,7 +1,7 @@
 # Northwind Group FY2024 Consolidation Engine
 
 **Bundle ID:** `NWG-D0BC`  
-**Candidate:** Lakshit Sehdev (`ls`)
+**Candidate:** Naman Nagi (`ls`)
 
 Deterministic, audit-traceable multi-currency consolidation pipeline for Northwind Group (Northwind Inc. USD parent, Northwind UK Ltd 100% GBP subsidiary, and Northwind India Pvt Ltd 80% INR subsidiary acquired 1 July 2024).
 
